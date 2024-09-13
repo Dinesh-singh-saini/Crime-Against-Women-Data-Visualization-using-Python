@@ -1,1 +1,1 @@
-
+Ruko jara sabar kro!
