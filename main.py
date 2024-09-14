@@ -169,7 +169,14 @@ def top_5_states_highest_crimes():
             print(f"Year {year} not found in dataset. Please try again.")
 
     elif choice == '2':
-        top_5 = data.groupby('STATE/UT').sum(numeric_only=True).sum(axis=1).sort_values(ascending=False).head(5)
+        data_numeric = data.copy()
+        for col in data.columns:
+            if col != 'STATE/UT':
+                data_numeric[col] = pd.to_numeric(data_numeric[col], errors='coerce')
+        total_crimes = data_numeric.drop(columns='STATE/UT').sum(axis=1)
+        state_totals = data[['STATE/UT']].copy()
+        state_totals['Total Crimes'] = total_crimes
+        top_5 = state_totals.groupby('STATE/UT')['Total Crimes'].sum().sort_values(ascending=False).head(7).iloc[2:7]
         top_5.plot(kind='bar', figsize=(10, 6), title="Top 5 States with Highest Total Crimes (All Years)")
         plt.ylabel('Total Crimes')
         plt.xlabel('States/UT')
@@ -209,8 +216,7 @@ def top_5_safe_states():
     else:
         print("Invalid choice. Please enter 1 or 2.")
 
-# starts main from here
-
+# main starts from here
 print("WOMEN CRIME DATA ANALYSIS DURING 2001-2012 IN INDIA using NCRB data || https://www.data.gov.in/resource/crime-against-women-during-2001-2012")
 print('Made with ❤️ by: @Dinesh-singh-saini')
 while True:
@@ -228,4 +234,3 @@ while True:
         top_5_safe_states()
     else:
         print("Invalid option, please try again.")
-        
