@@ -1,2 +1,94 @@
-# Crime-Against-Women-Data-Visualization-using-Python
-This project provides a Python-based tool to analyze and visualize crime data related to offenses against women across different states/UTs in India. Using libraries like pandas and matplotlib, the project offers multiple insights into crime trends, comparisons, and year-over-year analyses.
+# Crime Against Women Data Visualization using Python
+
+## Overview
+
+This project provides an interactive analysis and visualization of crime data against women in India from 2001 to 2012. Utilizing Python, Pandas, and Matplotlib, the tool allows users to explore trends, compare states, and analyze crime types to better understand crime patterns.
+
+## Features
+
+- **Visualize Data by State/UT**: 
+  - Show total crimes for each State/UT.
+  - Compare crime trends across multiple states.
+  - Display crime type breakdown for a specific State/UT.
+  
+- **Visualize Data by Crime Type**:
+  - Show trends for a specific crime type.
+  - Compare multiple crime types within a state.
+
+- **Year-wise Crime Analysis**:
+  - Display total crimes for each year.
+  - Show year-over-year crime changes for a specific crime.
+
+- **Top 5 States with Highest Crimes**:
+  - Identify the top 5 states with the highest crimes in a specific year.
+  - Find the top 5 states with the highest total crimes over all years.
+
+- **Top 5 Safe States/UT**:
+  - Identify the top 5 safest states/UTs in a specific year.
+  - Find the top 5 safest states/UTs over all years.
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have the following libraries installed:
+- `pandas`
+- `matplotlib`
+
+You can install these libraries using pip:
+```bash
+pip install pandas matplotlib
+```
+## Dataset
+
+The dataset used in this project is "Crime Against Women Data" available from [Data.gov.in](https://www.data.gov.in/resource/crime-against-women-during-2001-2012). Ensure the dataset is in CSV format and located at the specified file path.
+
+## File Structure
+
+Crime-Against-Women-Data-Visualization-using-Python/
+│
+├── main.py                                     # Main script to run the data analysis
+├── NCRB women crime data (2001 - 2012).csv     # Dataset (place it in the same directory or update the path in the script)
+├── README.md                                   # This file
+├── LICENSE                                     # To ensure no one can copy the project (except for educational purpose)
+└── test.py                                     # For testing purposes 
+
+## Usage
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/Crime-Against-Women-Data-Visualization-using-Python.git
+```
+2. Navigate to the project directory:
+```bash
+cd Crime-Against-Women-Data-Visualization-using-Python
+```
+3. Run the script:
+```bash
+python main.py
+```
+4. Follow the on-screen menu to perform various analyses.
+
+## Example
+
+### Visualizing Data by State/UT
+
+To show the total crimes for each State/UT, select option 1 under the "Visualize Data by State/UT" menu. The script will generate a bar chart displaying the total crimes for each state.
+
+### Year-wise Crime Analysis
+To display total crimes for each year, select option 1 under the "Year-wise Crime Analysis" menu. The script will generate a line plot showing the trend of total crimes over the years.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+For any questions or feedback, please contact:
+
+## Author: Dinesh Kumar
+  * Email: dineshkumar623092@gmail.com
+    
+## Acknowledgments
+  * Data source: Data.gov.in
+  * Libraries used: Pandas, Matplotlib
+                                                      #Made with ❤️ by Dinesh Kumar
