@@ -1,6 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# for testing the function only
+# nikkama file hai testing ke liye rakh skte ho yadi man hai toh
+
 file_path = 'NCRB women crime data (2001 - 2012).csv'
 data = pd.read_csv(file_path)
 
