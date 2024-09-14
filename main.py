@@ -5,11 +5,6 @@ import matplotlib.pyplot as plt
 file_path = 'D:\Downloads\crcCAW_r1.csv'
 data = pd.read_csv(file_path)
 
-# Convert columns to numeric, except for 'STATE/UT' and any other non-numeric columns
-for col in data.columns[2:]:
-    data[col] = pd.to_numeric(data[col], errors='coerce')
-
-
 # Menu function
 def show_menu():
     print("Select an option from the menu:")
