@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-file_path = 'D:\\Downloads\\crcCAW_r1.csv'
+file_path = 'NCRB women crime data (2001 - 2012).csv'
 data = pd.read_csv(file_path)
 
 print("1. Top 5 safest states in a specific year")
