@@ -53,6 +53,7 @@ Crime-Against-Women-Data-Visualization-using-Python/
 ├── LICENSE                                     # To ensure no one can copy the project (except for educational purposes).
 ├── Project structure.png                       # For a better understanding of the project structure and menus.
 ├── Examples Results                            # This folder contains the visualization of the tested results.
+├── example.JPEG                                # Collage pic of examples.
 └── test.py                                     # For testing purposes.
 ```
 
@@ -75,6 +76,7 @@ python main.py
 ## Example
 
 ![project structure](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/Project%20structure.png)
+![example](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/example.JPG)
 
 ### Visualizing Data by State/UT
 
