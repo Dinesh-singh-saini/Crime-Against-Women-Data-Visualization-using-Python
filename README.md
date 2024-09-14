@@ -50,7 +50,8 @@ Crime-Against-Women-Data-Visualization-using-Python/
 ├── main.py                                     # Main script to run the data analysis
 ├── NCRB women crime data (2001 - 2012).csv     # Dataset (place it in the same directory or update the path in the script)
 ├── README.md                                   # This file
-├── LICENSE                                     # To ensure no one can copy the project (except for educational purpose)
+├── LICENSE                                     # To ensure no one can copy the project (except for educational purposes)
+├── Project structure.png                       # For a better understanding of the project structure and menus 
 └── test.py                                     # For testing purposes
 ```
 
@@ -72,12 +73,14 @@ python main.py
 
 ## Example
 
+![project structure](Project structure.png)
+
 ### Visualizing Data by State/UT
 
 To show the total crimes for each State/UT, select option 1 under the "Visualize Data by State/UT" menu. The script will generate a bar chart displaying the total crimes for each state.
 
 ### Year-wise Crime Analysis
-To display total crimes for each year, select option 1 under the "Year-wise Crime Analysis" menu. The script will generate a line plot showing the trend of total crimes over the years.
+Select option 1 under the "Year-wise Crime Analysis" menu to display the total crimes for each year. The script will generate a line plot showing the trend of total crimes over the years.
 
 ## License
 
