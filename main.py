@@ -7,8 +7,6 @@ data = pd.read_csv(file_path)
 
 
 def show_menu():
-    print("WOMEN CRIME DATA ANALYSIS DURING 2001-2012 IN INDIA using NCRB data || https://www.data.gov.in/resource/crime-against-women-during-2001-2012")
-    print('Made with ❤️ by: @Dinesh-singh-saini')
     print("==========================================")
     print("Select an option from the menu:")
     print("1. Visualize Data by State/UT")
@@ -211,7 +209,10 @@ def top_5_safe_states():
     else:
         print("Invalid choice. Please enter 1 or 2.")
 
+# starts main from here
 
+print("WOMEN CRIME DATA ANALYSIS DURING 2001-2012 IN INDIA using NCRB data || https://www.data.gov.in/resource/crime-against-women-during-2001-2012")
+print('Made with ❤️ by: @Dinesh-singh-saini')
 while True:
     choice = show_menu()
 
