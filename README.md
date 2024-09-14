@@ -73,7 +73,7 @@ python main.py
 
 ## Example
 
-![project structure](Project structure.png)
+![project structure](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/Project%20structure.png)
 
 ### Visualizing Data by State/UT
 
@@ -96,4 +96,4 @@ For any questions or feedback, please contact:
   * Data source: Data.gov.in
   * Libraries used: Pandas, Matplotlib
 
-#Made with ❤️ by Dinesh Kumar
+# Made with ❤️ by Dinesh Kumar
