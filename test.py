@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 
 # For testing the function only
 # last tested code
-# visualize_data_by_crime()
 # nikkama file hai testing ke liye rakh skte ho yadi man hai toh
 
 file_path = 'NCRB women crime data (2001 - 2012).csv'
