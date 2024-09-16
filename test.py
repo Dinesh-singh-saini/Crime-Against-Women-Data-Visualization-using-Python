@@ -11,19 +11,33 @@ data = pd.read_csv(file_path)
 states = input("Enter State/UT names to compare (comma-separated): ").split(',')
 states = [state.strip() for state in states]
 
-state_data = data[data['STATE/UT'].isin(states)].set_index('STATE/UT')
+# Ensure 'STATE/UT' exists in your DataFrame and filter the data accordingly
+if 'STATE/UT' not in data.columns:
+    raise ValueError("Column 'STATE/UT' does not exist in the data.")
 
+# Filter data based on user input and ensure 'STATE/UT' is in index
+state_data = data[data['STATE/UT'].isin(states)]
 if state_data.empty:
-    print("No data found for the entered states. Please check your input.")
-yearly_data = state_data.iloc[:, 2:]
+    raise ValueError("No data available for the selected states.")
+
+# Set 'STATE/UT' as index and select columns for yearly data
+state_data = state_data.set_index('STATE/UT')
+yearly_data = state_data.iloc[:, 2:]  # Adjust based on your data's structure
+
+# Transpose yearly data for plotting
 yearly_data_T = yearly_data.T
+
+# Plotting
 plt.figure(figsize=(20, 13))
-yearly_data_T.plot(marker='.', ax=plt.gca())
-plt.title("Crime Trends Comparison for Selected States/UTs")
-plt.xticks(ticks=range(len(yearly_data_T.index)), labels=yearly_data_T.index)
-plt.ylabel('Number of Crimes')
+for state in states:
+    if state in yearly_data.index:
+        plt.plot(yearly_data_T.index, yearly_data_T[state], marker='.', label=state)
+
+plt.title("Crime Trends Comparison")
 plt.xlabel('Year')
-plt.grid()
+plt.ylabel('Number of Crimes')
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.legend(title='States/UT')
 plt.tight_layout()
 plt.show()
-
