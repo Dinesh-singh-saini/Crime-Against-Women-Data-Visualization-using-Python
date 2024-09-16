@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-file_path = 'D:\Downloads\crcCAW_r1.csv'
+file_path = 'NCRB women crime data (2001 - 2012).csv'
 data = pd.read_csv(file_path)
 
 
@@ -157,7 +157,8 @@ def top_5_states_highest_crimes():
         year = input("Enter year (2001 - 2012): ")
         if year in data.columns:
             top_5 = data.groupby('STATE/UT')[year].sum().sort_values(ascending=False).head(7).iloc[2:7]
-            top_5.plot(kind='bar', figsize=(10, 6), title=f"Top 5 States with Highest Crimes in {year}",  color=['#8B0000', '#A52A2A', '#B22222', '#CD5C5C', '#FF6666'])
+            top_5.plot(kind='bar', figsize=(10, 6), title=f"Top 5 States with Highest Crimes in {year}",
+                       color=['#8B0000', '#A52A2A', '#B22222', '#CD5C5C', '#FF6666'])
             plt.ylabel('Total Crimes')
             plt.xlabel('States/UT')
             plt.tight_layout()
@@ -174,7 +175,8 @@ def top_5_states_highest_crimes():
         state_totals = data[['STATE/UT']].copy()
         state_totals['Total Crimes'] = total_crimes
         top_5 = state_totals.groupby('STATE/UT')['Total Crimes'].sum().sort_values(ascending=False).head(7).iloc[2:7]
-        top_5.plot(kind='bar', figsize=(10, 6), title="Top 5 States with Highest Total Crimes (All Years)",  color=['#8B0000', '#A52A2A', '#B22222', '#CD5C5C', '#FF6666'])
+        top_5.plot(kind='bar', figsize=(10, 6), title="Top 5 States with Highest Total Crimes (All Years)",
+                   color=['#8B0000', '#A52A2A', '#B22222', '#CD5C5C', '#FF6666'])
         plt.ylabel('Total Crimes')
         plt.xlabel('States/UT')
         plt.tight_layout()
@@ -195,7 +197,8 @@ def top_5_safe_states():
         if year in data.columns:
             print(f"Top 5 safest states/UTs in the year {year}")
             safe_states = data.groupby('STATE/UT')[year].sum().sort_values().head(5)
-            safe_states.plot(kind='bar', title=f"Top 5 Safe States/UT in {year}", color=['#006400', '#228B22', '#32CD32', '#66FF66', '#99FF99'])
+            safe_states.plot(kind='bar', title=f"Top 5 Safe States/UT in {year}",
+                             color=['#006400', '#228B22', '#32CD32', '#66FF66', '#99FF99'])
             plt.ylabel('Total Crimes')
             plt.tight_layout()
             plt.show()
@@ -205,13 +208,15 @@ def top_5_safe_states():
     elif choice == 2:
         print("Top 5 safest states/UTs over all years")
         safe_states = data.groupby('STATE/UT').sum(numeric_only=True).sum(axis=1).sort_values().head(5)
-        safe_states.plot(kind='bar', title="Top 5 Safe States/UT (All Years)",color=['#006400', '#228B22', '#32CD32', '#66FF66', '#99FF99'])
+        safe_states.plot(kind='bar', title="Top 5 Safe States/UT (All Years)",
+                         color=['#006400', '#228B22', '#32CD32', '#66FF66', '#99FF99'])
         plt.ylabel('Total Crimes')
         plt.tight_layout()
         plt.show()
 
     else:
         print("Invalid choice. Please enter 1 or 2.")
+
 
 print("==========================================")
 print(
