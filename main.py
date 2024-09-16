@@ -1,8 +1,7 @@
-import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.pyplot import figure
+import pandas as pd
 
-file_path = 'NCRB women crime data (2001 - 2012).csv'
+file_path = 'D:\Downloads\crcCAW_r1.csv'
 data = pd.read_csv(file_path)
 
 
@@ -71,20 +70,18 @@ def visualize_data_by_crime():
 
     if choice == 1:
         crime = input("Enter Crime Type: ").strip().upper()
-
         if crime not in data['CRIME HEAD'].str.upper().unique():
             print(f"Error: Crime Type '{crime}' not found in the dataset.")
         else:
             crime_data = data[data['CRIME HEAD'].str.upper() == crime]
-
             years = crime_data.columns[2:]
             crime_sums = crime_data[years].sum()
-            plt.plot(years, crime_sums, marker='o')
+            plt.figure(figsize=(12, 8))
+            plt.plot(years, crime_sums, marker='o', color='red')
             plt.title(f"Trend of {crime} over the Years")
             plt.xlabel("Year")
-            plt.figure(figsize=(12, 8))
             plt.ylabel("Number of Crimes")
-            plt.grid(True)
+            plt.grid()
             plt.tight_layout()
             plt.show()
 
@@ -160,7 +157,7 @@ def top_5_states_highest_crimes():
         year = input("Enter year (2001 - 2012): ")
         if year in data.columns:
             top_5 = data.groupby('STATE/UT')[year].sum().sort_values(ascending=False).head(7).iloc[2:7]
-            top_5.plot(kind='bar', figsize=(10, 6), title=f"Top 5 States with Highest Crimes in {year}")
+            top_5.plot(kind='bar', figsize=(10, 6), title=f"Top 5 States with Highest Crimes in {year}",  color=['#8B0000', '#A52A2A', '#B22222', '#CD5C5C', '#FF6666'])
             plt.ylabel('Total Crimes')
             plt.xlabel('States/UT')
             plt.tight_layout()
@@ -177,7 +174,7 @@ def top_5_states_highest_crimes():
         state_totals = data[['STATE/UT']].copy()
         state_totals['Total Crimes'] = total_crimes
         top_5 = state_totals.groupby('STATE/UT')['Total Crimes'].sum().sort_values(ascending=False).head(7).iloc[2:7]
-        top_5.plot(kind='bar', figsize=(10, 6), title="Top 5 States with Highest Total Crimes (All Years)")
+        top_5.plot(kind='bar', figsize=(10, 6), title="Top 5 States with Highest Total Crimes (All Years)",  color=['#8B0000', '#A52A2A', '#B22222', '#CD5C5C', '#FF6666'])
         plt.ylabel('Total Crimes')
         plt.xlabel('States/UT')
         plt.tight_layout()
@@ -198,7 +195,7 @@ def top_5_safe_states():
         if year in data.columns:
             print(f"Top 5 safest states/UTs in the year {year}")
             safe_states = data.groupby('STATE/UT')[year].sum().sort_values().head(5)
-            safe_states.plot(kind='bar', title=f"Top 5 Safe States/UT in {year}")
+            safe_states.plot(kind='bar', title=f"Top 5 Safe States/UT in {year}", color=['#006400', '#228B22', '#32CD32', '#66FF66', '#99FF99'])
             plt.ylabel('Total Crimes')
             plt.tight_layout()
             plt.show()
@@ -208,7 +205,7 @@ def top_5_safe_states():
     elif choice == 2:
         print("Top 5 safest states/UTs over all years")
         safe_states = data.groupby('STATE/UT').sum(numeric_only=True).sum(axis=1).sort_values().head(5)
-        safe_states.plot(kind='bar', title="Top 5 Safe States/UT (All Years)")
+        safe_states.plot(kind='bar', title="Top 5 Safe States/UT (All Years)",color=['#006400', '#228B22', '#32CD32', '#66FF66', '#99FF99'])
         plt.ylabel('Total Crimes')
         plt.tight_layout()
         plt.show()
@@ -216,9 +213,11 @@ def top_5_safe_states():
     else:
         print("Invalid choice. Please enter 1 or 2.")
 
-# main starts from here
-print("WOMEN CRIME DATA ANALYSIS DURING 2001-2012 IN INDIA using NCRB data || https://www.data.gov.in/resource/crime-against-women-during-2001-2012")
+print("==========================================")
+print(
+    "WOMEN CRIME DATA ANALYSIS DURING 2001-2012 IN INDIA using NCRB data || https://www.data.gov.in/resource/crime-against-women-during-2001-2012")
 print('Made with ❤️ by: @Dinesh-singh-saini')
+
 while True:
     choice = show_menu()
 
