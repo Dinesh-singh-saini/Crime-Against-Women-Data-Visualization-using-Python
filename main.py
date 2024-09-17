@@ -165,6 +165,7 @@ def year_wise_analysis():
         plt.tight_layout()
         plt.show()
 
+
     elif choose == '2':
         crime = input("Enter Crime Type: ")
         if crime in data['CRIME HEAD'].values:
