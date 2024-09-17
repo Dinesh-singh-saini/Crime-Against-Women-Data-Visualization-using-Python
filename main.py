@@ -7,13 +7,14 @@ data = pd.read_csv(file_path)
 
 def show_menu():
     print("==========================================")
-    print("Select an option from the menu:")
+    print("Choose an option from the menu:")
     print("1. Visualize Data by State/UT")
     print("2. Visualize Data by Crime Type")
     print("3. Year-wise Crime Analysis")
     print("4. Top 5 States with Highest Crimes")
     print("5. Top 5 Safe States/UT")
-    return int(input("Enter your choice: "))
+    print("Enter '0' to exit.")
+    return input("Enter your choice: ")
 
 
 # tested done 100%
@@ -22,9 +23,11 @@ def visualize_data_by_state():
     print("1. Show total crimes for each State/UT")
     print("2. Compare crime trends across multiple states")
     print("3. Display crime type breakdown for a specific State/UT")
-    choice = int(input("Select option: "))
+    print("Enter '0' to Return Main menu:")
+    choose = input("Select option: ")
 
-    if choice == 1:
+    if choose == '1':
+        print("Total crimes for each State/UT")
         state_totals = data.groupby('STATE/UT').sum(numeric_only=True).sum(axis=1).sort_values()
         state_totals = state_totals.astype(int)
         plt.figure(figsize=(12, 8))
@@ -34,8 +37,9 @@ def visualize_data_by_state():
         plt.tight_layout()
         plt.show()
 
-    elif choice == 2:
+    elif choose == '2':
         states = input("Enter State/UT names to compare (comma-separated): ").split(',')
+        print('states:', states)
         states = [state.strip() for state in states]
         state_data = data[data['STATE/UT'].isin(states)].set_index('STATE/UT')
         yearly_data = state_data.iloc[:, 2:]
@@ -50,8 +54,9 @@ def visualize_data_by_state():
         plt.tight_layout()
         plt.show()
 
-    elif choice == 3:
+    elif choose == '3':
         state = input("Enter State/UT name: ")
+        print('state:', state)
         state_data = data[data['STATE/UT'] == state].set_index('CRIME HEAD')
         yearly_data = state_data.iloc[:, 2:]
         yearly_data.T.plot(kind='bar', stacked=True, figsize=(10, 6), title=f"Crime Type Breakdown in {state}")
@@ -60,15 +65,26 @@ def visualize_data_by_state():
         plt.tight_layout()
         plt.show()
 
+    elif choose == '0':
+        print("Return to Main menu!")
+        return
+
+
+    else:
+        print("Invalid choice. Please enter 1, 2, or 3.")
+        visualize_data_by_state()
+
+
 
 # tested done 100%
 # Visualize Data by Crime Type
 def visualize_data_by_crime():
     print("1. Show trends for a specific crime type")
     print("2. Compare multiple crime types within a state")
-    choice = int(input("Select option: "))
+    print("Enter '0' to Return Main menu:")
+    choose = input("Select option: ")
 
-    if choice == 1:
+    if choose == '1':
         crime = input("Enter Crime Type: ").strip().upper()
         if crime not in data['CRIME HEAD'].str.upper().unique():
             print(f"Error: Crime Type '{crime}' not found in the dataset.")
@@ -86,7 +102,7 @@ def visualize_data_by_crime():
             plt.show()
 
 
-    elif choice == 2:
+    elif choose == '2':
         state = input("Enter State/UT: ").strip().title()
 
         if state not in data['STATE/UT'].unique():
@@ -111,15 +127,24 @@ def visualize_data_by_crime():
                 plt.tight_layout()
                 plt.show()
 
+    elif choose == '0':
+        print("Return to Main menu!")
+        return
+
+    else:
+        print("Invalid choice. Please enter 1 or 2.")
+        visualize_data_by_crime()
+
 
 # tested done 100%
 # Year-wise Crime Analysis
 def year_wise_analysis():
     print("1. Display total crimes for each year")
     print("2. Show year-over-year crime changes for a specific crime")
-    choice = int(input("Select option: "))
+    print("Enter '0' to Return Main menu:")
+    choose = input("Select option: ")
 
-    if choice == 1:
+    if choose == '1':
         year_columns = data.columns[2:]
         year_totals = data[year_columns].sum()
         plt.plot(year_columns, year_totals, marker='o')
@@ -130,7 +155,7 @@ def year_wise_analysis():
         plt.tight_layout()
         plt.show()
 
-    elif choice == 2:
+    elif choose == '2':
         crime = input("Enter Crime Type: ")
         if crime in data['CRIME HEAD'].values:
             crime_data = data[data['CRIME HEAD'] == crime].iloc[:, 2:].sum()
@@ -144,16 +169,25 @@ def year_wise_analysis():
             plt.tight_layout()
             plt.show()
 
+    elif choose == '0':
+        print("Return to Main menu!")
+        return
+
+    else:
+        print("Invalid choice. Please enter 1 or 2.")
+        year_wise_analysis()
+
 
 # tested done 100%
 # Top 5 States with Highest Crimes
 def top_5_states_highest_crimes():
     print("1. Top 5 states with highest crimes in a specific year")
     print("2. Top 5 states with highest total crimes over all years")
+    print("Enter '0' to Return Main menu:")
 
-    choice = input("Enter your choice (1 or 2): ")
+    choose = input("Enter your choice (1 or 2): ")
 
-    if choice == '1':
+    if choose == '1':
         year = input("Enter year (2001 - 2012): ")
         if year in data.columns:
             top_5 = data.groupby('STATE/UT')[year].sum().sort_values(ascending=False).head(7).iloc[2:7]
@@ -163,10 +197,15 @@ def top_5_states_highest_crimes():
             plt.xlabel('States/UT')
             plt.tight_layout()
             plt.show()
+
+        elif choose == '0':
+            print("Returning to Main menu!")
+            return
+
         else:
             print(f"Year {year} not found in dataset. Please try again.")
 
-    elif choice == '2':
+    elif choose == '2':
         data_numeric = data.copy()
         for col in data.columns:
             if col != 'STATE/UT':
@@ -182,8 +221,14 @@ def top_5_states_highest_crimes():
         plt.tight_layout()
         plt.show()
 
+
+    elif choose == '0':
+        print("Return to Main menu!")
+        return
+
     else:
         print("Invalid choice. Please enter 1 or 2.")
+        top_5_states_highest_crimes()
 
 
 #   tested done 100%
@@ -191,8 +236,10 @@ def top_5_states_highest_crimes():
 def top_5_safe_states():
     print("1. Top 5 safest states in a specific year")
     print("2. Top 5 safest states over all years")
-    choice = int(input("Enter your choice (1 or 2): "))
-    if choice == 1:
+    print("Enter '0' to Return Main menu:")
+    choose = input("Enter your choice (1 or 2): ")
+
+    if choose == '1':
         year = input("Enter the year (2001 - 2012): ")
         if year in data.columns:
             print(f"Top 5 safest states/UTs in the year {year}")
@@ -205,7 +252,7 @@ def top_5_safe_states():
         else:
             print(f"Year {year} is not available in the dataset.")
 
-    elif choice == 2:
+    elif choose == '2':
         print("Top 5 safest states/UTs over all years")
         safe_states = data.groupby('STATE/UT').sum(numeric_only=True).sum(axis=1).sort_values().head(5)
         safe_states.plot(kind='bar', title="Top 5 Safe States/UT (All Years)",
@@ -214,8 +261,13 @@ def top_5_safe_states():
         plt.tight_layout()
         plt.show()
 
+    elif choose == '0':
+        print("Return to Main menu!")
+        return
+
     else:
         print("Invalid choice. Please enter 1 or 2.")
+        top_5_safe_states()
 
 
 print("==========================================")
@@ -226,15 +278,18 @@ print('Made with ❤️ by: @Dinesh-singh-saini')
 while True:
     choice = show_menu()
 
-    if choice == 1:
+    if choice == '1':
         visualize_data_by_state()
-    elif choice == 2:
+    elif choice == '2':
         visualize_data_by_crime()
-    elif choice == 3:
+    elif choice == '3':
         year_wise_analysis()
-    elif choice == 4:
+    elif choice == '4':
         top_5_states_highest_crimes()
-    elif choice == 5:
+    elif choice == '5':
         top_5_safe_states()
+    elif choice == '0':
+        print("Thank you for using the program. Goodbye!")
+        break
     else:
         print("Invalid option, please try again.")
