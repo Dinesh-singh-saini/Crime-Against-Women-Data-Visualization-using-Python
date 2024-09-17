@@ -193,7 +193,7 @@ class CrimeDataApp(tk.Tk):
             ax.set_xlabel('States/UT')
             self.show_plot(fig)
 
-        # Create a new window for top 5 states with highest crimes
+        # Create a new window for top 5 states with the highest crimes
         window = tk.Toplevel(self)
         window.title("Top 5 States with Highest Crimes")
 
