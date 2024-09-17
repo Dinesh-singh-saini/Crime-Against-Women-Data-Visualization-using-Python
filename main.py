@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+from matplotlib.pyplot import figure
 
 file_path = 'NCRB women crime data (2001 - 2012).csv'
 data = pd.read_csv(file_path)
@@ -40,30 +41,39 @@ def visualize_data_by_state():
     elif choose == '2':
         states = input("Enter State/UT names to compare (comma-separated): ").split(',')
         print('states:', states)
-        states = [state.strip() for state in states]
-        state_data = data[data['STATE/UT'].isin(states)].set_index('STATE/UT')
-        yearly_data = state_data.iloc[:, 2:]
-        yearly_data_T = yearly_data.T
-        plt.figure(figsize=(20, 13))
-        yearly_data_T.plot(marker='.', ax=plt.gca())
-        plt.title("Crime Trends Comparison")
-        plt.xticks(ticks=range(len(yearly_data_T.index)), labels=yearly_data_T.index)
-        plt.ylabel('Number of Crimes')
-        plt.xlabel('Year')
-        plt.grid()
-        plt.tight_layout()
-        plt.show()
+        if not all(state.strip() in data['STATE/UT'].values for state in states):
+            print("Error: One or more State/UT names not found in the dataset.")
+            return
+        else:
+            states = [state.strip() for state in states]
+            state_data = data[data['STATE/UT'].isin(states)].set_index('STATE/UT')
+            yearly_data = state_data.iloc[:, 2:]
+            yearly_data_T = yearly_data.T
+            plt.figure(figsize=(20, 13))
+            yearly_data_T.plot(marker='.', ax=plt.gca())
+            plt.title("Crime Trends Comparison")
+            plt.xticks(ticks=range(len(yearly_data_T.index)), labels=yearly_data_T.index)
+            plt.ylabel('Number of Crimes')
+            plt.xlabel('Year')
+            plt.grid()
+            plt.tight_layout()
+            plt.show()
 
     elif choose == '3':
         state = input("Enter State/UT name: ")
         print('state:', state)
-        state_data = data[data['STATE/UT'] == state].set_index('CRIME HEAD')
-        yearly_data = state_data.iloc[:, 2:]
-        yearly_data.T.plot(kind='bar', stacked=True, figsize=(10, 6), title=f"Crime Type Breakdown in {state}")
-        plt.ylabel('Number of Crimes')
-        plt.xlabel('Year')
-        plt.tight_layout()
-        plt.show()
+        if state not in data['STATE/UT'].values:
+            print(f"Error: State/UT '{state}' not found in the dataset.")
+
+        else:
+            state_data = data[data['STATE/UT'] == state].set_index('CRIME HEAD')
+            yearly_data = state_data.iloc[:, 2:]
+            yearly_data.T.plot(kind='bar', stacked=True, figsize=(10, 6), title=f"Crime Type Breakdown in {state}")
+            plt.ylabel('Number of Crimes')
+            plt.xlabel('Year')
+            plt.figure(figsize=(10, 6))
+            plt.tight_layout()
+            plt.show()
 
     elif choose == '0':
         print("Return to Main menu!")
@@ -73,7 +83,6 @@ def visualize_data_by_state():
     else:
         print("Invalid choice. Please enter 1, 2, or 3.")
         visualize_data_by_state()
-
 
 
 # tested done 100%
@@ -151,6 +160,7 @@ def year_wise_analysis():
         plt.title("Total Crimes per Year")
         plt.xlabel("Year")
         plt.ylabel("Total Crimes")
+        plt.figure(figsize=(10, 6))
         plt.grid(True)
         plt.tight_layout()
         plt.show()
@@ -168,6 +178,9 @@ def year_wise_analysis():
             plt.grid(True)
             plt.tight_layout()
             plt.show()
+
+        else:
+            print(f"Error: Crime Type '{crime}' not found in the dataset.")
 
     elif choose == '0':
         print("Return to Main menu!")
@@ -246,6 +259,7 @@ def top_5_safe_states():
             safe_states = data.groupby('STATE/UT')[year].sum().sort_values().head(5)
             safe_states.plot(kind='bar', title=f"Top 5 Safe States/UT in {year}",
                              color=['#006400', '#228B22', '#32CD32', '#66FF66', '#99FF99'])
+            plt.figure(figsize=(10, 6))
             plt.ylabel('Total Crimes')
             plt.tight_layout()
             plt.show()
@@ -259,6 +273,7 @@ def top_5_safe_states():
                          color=['#006400', '#228B22', '#32CD32', '#66FF66', '#99FF99'])
         plt.ylabel('Total Crimes')
         plt.tight_layout()
+        plt.figure(figsize=(10, 6))
         plt.show()
 
     elif choose == '0':
