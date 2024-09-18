@@ -7,25 +7,25 @@ This project provides an interactive analysis and visualization of crime data ag
 ## Features
 
 - **Visualize Data by State/UT**: 
-  - Show total crimes for each State/UT.
-  - Compare crime trends across multiple states.
-  - Display crime type breakdown for a specific State/UT.
+  - Show total crimes for each State/UT. ex [result](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/Examples%20Results/Figure_1.png)
+  - Compare crime trends across multiple states. ex [result](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/Examples%20Results/Figure_2.png)
+  - Display crime type breakdown for a specific State/UT. ex [result](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/Examples%20Results/Figure_3.png)
   
 - **Visualize Data by Crime Type**:
-  - Show trends for a specific crime type.
-  - Compare multiple crime types within a state.
+  - Show trends for a specific crime type. ex [result](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/Examples%20Results/Figure_4.png)
+  - Compare multiple crime types within a state. ex [result](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/Examples%20Results/Figure_5.png)
 
 - **Year-wise Crime Analysis**:
-  - Display total crimes for each year.
-  - Show year-over-year crime changes for a specific crime.
+  - Display total crimes for each year. ex [result](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/Examples%20Results/Figure_6.png)
+  - Show year-over-year crime changes for a specific crime. ex [result](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/Examples%20Results/Figure_7.png)
 
 - **Top 5 States with Highest Crimes**:
-  - Identify the top 5 states with the highest crimes in a specific year.
-  - Find the top 5 states with the highest total crimes over all years.
+  - Identify the top 5 states with the highest crimes in a specific year. ex [result](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/Examples%20Results/Figure_8.png)
+  - Find the top 5 states with the highest total crimes over all years. ex [result](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/Examples%20Results/Figure_9.png)
 
 - **Top 5 Safe States/UT**:
-  - Identify the top 5 safest states/UTs in a specific year.
-  - Find the top 5 safest states/UTs over all years.
+  - Identify the top 5 safest states/UTs in a specific year. ex [result](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/Examples%20Results/Figure_10.png)
+  - Find the top 5 safest states/UTs over all years. ex [result](https://github.com/Dinesh-singh-saini/Crime-Against-Women-Data-Visualization-using-Python/blob/main/Examples%20Results/Figure_11.png)
 
 ## Getting Started
 
