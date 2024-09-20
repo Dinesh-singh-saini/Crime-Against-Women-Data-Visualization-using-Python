@@ -309,6 +309,3 @@ while True:
         break
     else:
         print("Invalid option, please try again.")
-
-
-
