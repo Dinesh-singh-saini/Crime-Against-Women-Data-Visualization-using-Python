@@ -79,7 +79,6 @@ def visualize_data_by_state():
         print("Return to Main menu!")
         return
 
-
     else:
         print("Invalid choice. Please enter 1, 2, or 3.")
         visualize_data_by_state()
