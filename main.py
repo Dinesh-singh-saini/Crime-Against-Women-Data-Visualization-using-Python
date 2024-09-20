@@ -190,7 +190,6 @@ def year_wise_analysis():
         print("Invalid choice. Please enter 1 or 2.")
         year_wise_analysis()
 
-
 # tested done 100%
 # Top 5 States with Highest Crimes
 def top_5_states_highest_crimes():
